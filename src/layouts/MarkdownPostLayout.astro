@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import TagsList from "../components/TagsList.astro";
 
 const { frontmatter } = Astro.props;
 ---
@@ -7,4 +8,6 @@ const { frontmatter } = Astro.props;
     <code>{frontmatter.pubDate}</code>
     <p>Written by {frontmatter.author}</p>
     <slot />
+
+    <TagsList tags={frontmatter.tags.sort()} />
 </BaseLayout>

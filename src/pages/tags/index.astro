@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TagsList from '../../components/TagsList.astro';
+import Tag from './[tag].astro';
+
+const pageTitle = "Tags";
+
+const uniqueTags = [...new Set(Object.values(import.meta.glob('../posts/*.md', { eager: true })).map((post: any) => post.frontmatter.tags).flat().sort())];
+---
+<BaseLayout pageTitle={pageTitle}>
+	<p>All tags here</p>
+    <TagsList tags={uniqueTags} />
+    
+</BaseLayout>
